@@ -1,0 +1,60 @@
+.PlaceItem {
+  margin: 1rem 0;
+}
+
+.PlaceItem__content {
+  padding: 0;
+}
+
+.PlaceItem__info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.PlaceItem__image {
+  width: 100%;
+  height: 12.5rem;
+  margin-right: 1.5rem;
+}
+
+.PlaceItem__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.PlaceItem__info h2,
+.PlaceItem__info h3,
+.PlaceItem__info p {
+  margin: 0 0 0.5rem 0;
+}
+
+.PlaceItem__actions {
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+.PlaceItem__modalContent {
+  padding: 0;
+}
+
+.PlaceItem__modalActions {
+  text-align: right;
+}
+
+.PlaceItem__actions button,
+.PlaceItem__actions a {
+  margin: 0.5rem;
+}
+
+.MapContainer {
+  height: 15rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .PlaceItem__image {
+    height: 20rem;
+  } 
+}
