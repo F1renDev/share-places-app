@@ -5,6 +5,8 @@ import styles from "./SideDrawer.module.css";
 import { CSSTransition } from "react-transition-group";
 
 const SideDrawer = props => {
+  // A sidedrawer with smooth in-out animation
+
   const content = (
     <CSSTransition
       in={props.show}
@@ -18,6 +20,8 @@ const SideDrawer = props => {
       </aside>
     </CSSTransition>
   );
+
+  // Slider is displayed via portal so he would sit higher in the DOM tree
 
   return ReactDOM.createPortal(content, document.getElementById("drawer"));
 };

@@ -7,6 +7,7 @@ import Modal from "../../../shared/components/UIElements/Modal/Modal";
 import Map from "../../../shared/components/UIElements/Map/Map";
 
 const PlaceItem = props => {
+  // Passing props to show a map
   const [showMap, setShowMap] = useState(false);
 
   const openMapHandler = () => setShowMap(true);
@@ -17,6 +18,7 @@ const PlaceItem = props => {
 
   return (
     <React.Fragment>
+      {/* Map is shown together with modal to be able to close it in several ways */}
       <Modal
         show={showMap}
         onCancel={closeMapHandler}

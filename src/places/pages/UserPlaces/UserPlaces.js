@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import PlaceList from "../../components/PlaceList/PlaceList";
 
-
+// Temporary immitation of the backend with places created by user
 const TEST_PLACES = [
   {
     id: "p1",
@@ -35,7 +35,8 @@ const TEST_PLACES = [
 const UserPlaces = props => {
   //  User id that is encoded in the URL
   const userId = useParams().userId;
-
+  
+  // Returning only the places of the current user
   const loadPlaces = TEST_PLACES.filter(place => place.creator === userId);
   return <PlaceList items={loadPlaces} />;
 };

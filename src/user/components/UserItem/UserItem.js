@@ -6,6 +6,8 @@ import Avatar from "../../../shared/components/UIElements/Avatar/Avatar";
 import Card from "../../../shared/components/UIElements/Card/Card";
 
 const UserItem = props => {
+// A card for a single user linking to the places created by that user
+
   return (
     <li className={styles.UserItem}>
       <Card className={styles.UserItem__content}>

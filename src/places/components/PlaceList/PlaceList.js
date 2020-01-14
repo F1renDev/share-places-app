@@ -5,6 +5,8 @@ import Card from "../../../shared/components/UIElements/Card/Card";
 import PlaceItem from "../PlaceItem/PlaceItem";
 
 const PlaceList = props => {
+  // If there is no places created by this user, suggest creating some
+  // or display all places created by this user
   if (props.items.length === 0) {
     return (
       <div className={`${styles.PlaceList} center`}>

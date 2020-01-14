@@ -4,6 +4,8 @@ import styles from "./NavLinks.module.css";
 import { NavLink } from "react-router-dom";
 
 const NavLinks = props => {
+  //A list of navigation items
+
   return (
     <ul className={styles.NavLinks}>
       <li>

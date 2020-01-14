@@ -18,6 +18,8 @@ const MainNavigation = props => {
     setDrawerIsOpen(false);
   };
 
+  //If in mobile view - the navigation links look different
+
   return (
     <React.Fragment>
       {drawerIsOpen ? <Backdrop onClick={closeDrawerHandler} /> : null}
