@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import PlaceList from "../../components/PlaceList/PlaceList";
 
+
 const TEST_PLACES = [
   {
     id: "p1",
@@ -11,8 +12,8 @@ const TEST_PLACES = [
       "https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
     address: "20 W 34th St, New York, NY 10001",
     location: {
-      lat: 40.7484405,
-      lng: -73.9878531
+      lat: 40.7483405,
+      lng: -73.9858531
     },
     creator: "u1"
   },
@@ -24,8 +25,8 @@ const TEST_PLACES = [
       "https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
     address: "20 W 34th St, New York, NY 10001",
     location: {
-      lat: 40.7484405,
-      lng: -73.9878531
+      lat: 40.7483405,
+      lng: -73.9858531
     },
     creator: "u2"
   }
