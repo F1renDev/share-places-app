@@ -3,6 +3,7 @@ import styles from "./PlaceList.module.css";
 
 import Card from "../../../shared/components/UIElements/Card/Card";
 import PlaceItem from "../PlaceItem/PlaceItem";
+import Button from "../../../shared/components/FormElements/Button/Button";
 
 const PlaceList = props => {
   // If there is no places created by this user, suggest creating some
@@ -10,9 +11,9 @@ const PlaceList = props => {
   if (props.items.length === 0) {
     return (
       <div className={`${styles.PlaceList} center`}>
-        <Card style={{padding: '1rem'}}>
+        <Card style={{ padding: "1rem" }}>
           <h2>No places found. Maybe create one?</h2>
-          <button>Share Place</button>
+          <Button to="/places/new">Share Place</Button>
         </Card>
       </div>
     );

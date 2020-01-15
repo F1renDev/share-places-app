@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from "react";
+import React from "react";
 import styles from "./NewPlace.module.css";
 
 import Input from "../../../shared/components/FormElements/Input/Input";
@@ -7,34 +7,11 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
 } from "../../../shared/utility/validators";
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case "INPUT_CHANGE":
-      let formIsValid = true;
-      for (const inputId in state.inputs) {
-        if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid;
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid;
-        }
-      }
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid }
-        },
-        isValid: formIsValid
-      };
-    default:
-      return state;
-  }
-};
+import { useForm } from "../../../shared/hooks/form-hook";
 
 const NewPlace = () => {
-  const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {
+  const [formState, inputHandler] = useForm(
+    {
       title: {
         value: "",
         isValid: false
@@ -42,28 +19,18 @@ const NewPlace = () => {
       description: {
         value: "",
         isValid: false
+      },
+      address: {
+        value: "",
+        isValid: false
       }
     },
-    isValid: false
-  });
-
-  // The function will only re-run if one of it's dependencies has changed
-  const inputHandler = useCallback(
-    (id, value, isValid) => {
-      dispatch({
-        type: "INPUT_CHANGE",
-        value: value,
-        isValid: isValid,
-        inputId: id
-      });
-    },
-    [dispatch]
+    false
   );
 
   //Will send the data to the server here
   const placeSubmitHandler = event => {
     event.preventDefault();
-    console.log(formState.inputs);
   };
 
   return (

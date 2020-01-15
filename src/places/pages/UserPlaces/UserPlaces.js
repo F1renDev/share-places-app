@@ -6,7 +6,7 @@ import PlaceList from "../../components/PlaceList/PlaceList";
 const TEST_PLACES = [
   {
     id: "p1",
-    title: "Empire State Buidling",
+    title: "Empire State Building",
     description: "One of the most famous skyscrapers in the world",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
@@ -19,7 +19,7 @@ const TEST_PLACES = [
   },
   {
     id: "p2",
-    title: "Empire State Buidling",
+    title: "Emp. State Building",
     description: "One of the most famous skyscrapers in the world",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
