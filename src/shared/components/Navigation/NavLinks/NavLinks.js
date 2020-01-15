@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./NavLinks.module.css";
 
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../../../shared/context/auth-context";
 
 const NavLinks = props => {
-  //A list of navigation items
+  const auth = useContext(AuthContext);
 
+  //A list of navigation items
   return (
     <ul className={styles.NavLinks}>
       <li>
@@ -13,21 +15,32 @@ const NavLinks = props => {
           All Users
         </NavLink>
       </li>
-      <li>
-        <NavLink activeClassName={styles.active} to="/u1/places">
-          My Places
-        </NavLink>
-      </li>
-      <li>
-        <NavLink activeClassName={styles.active} to="/places/new">
-          New Place
-        </NavLink>
-      </li>
-      <li>
-        <NavLink activeClassName={styles.active} to="/auth">
-          Authenticate
-        </NavLink>
-      </li>
+      {auth.isLoggedIn && (
+        <li>
+          <NavLink activeClassName={styles.active} to="/u1/places">
+            My Places
+          </NavLink>
+        </li>
+      )}
+      {auth.isLoggedIn && (
+        <li>
+          <NavLink activeClassName={styles.active} to="/places/new">
+            New Place
+          </NavLink>
+        </li>
+      )}
+      {!auth.isLoggedIn && (
+        <li>
+          <NavLink activeClassName={styles.active} to="/auth">
+            Authenticate
+          </NavLink>
+        </li>
+      )}
+      {auth.isLoggedIn && (
+        <li>
+          <button onClick={auth.logout}>LOGOUT</button>
+        </li>
+      )}
     </ul>
   );
 };

@@ -1,0 +1,15 @@
+.AuthenticationHeader {
+  color: white;
+  text-align: center;
+}
+
+.Authentication {
+  width: 90%;
+  max-width: 25rem;
+  margin: 7rem auto;
+  text-align: center;
+}
+
+.Authentication form {
+  margin-bottom: 1rem;
+}
