@@ -26,7 +26,7 @@ const UsersList = props => {
           image={user.image}
           name={user.name}
           // number of places created by the user
-          placeCount={user.places}
+          placeCount={user.places.length}
         />
       ))}
     </ul>
