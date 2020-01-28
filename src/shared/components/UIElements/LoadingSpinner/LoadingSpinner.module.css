@@ -16,7 +16,7 @@
   animation: lds-dual-ring 1.2s linear infinite;
 }
 
-.loadingSpinner__overlay {
+.loadingSpinnerOverlay {
   height: 100%;
   width: 100%;
   position: absolute;
