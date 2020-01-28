@@ -22,16 +22,21 @@ export const useHttpClient = () => {
         });
 
         const responseData = await response.json();
+
+        activeHttpRequest.current = activeHttpRequest.current.filter(reqCtrl => reqCtrl !== httpAbortCtrl)
+
         // If not response.ok, than we have a 500-ish or 400-ish response code, but not an error
         if (!response.ok) {
           throw new Error(responseData.message);
         }
 
+        setIsLoading(false);
         return responseData;
       } catch (err) {
         setError(err.message);
+        setIsLoading(false);
+        throw err;
       }
-      setIsLoading(false);
     },
     //useCallback has no dependncies, so [] is passed
     []
