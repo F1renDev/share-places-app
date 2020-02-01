@@ -5,7 +5,7 @@
 }
 
 .ldsDualRing:after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 46px;
   height: 46px;
@@ -13,7 +13,7 @@
   border-radius: 50%;
   border: 5px solid #510077;
   border-color: #510077 transparent #510077 transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  animation: ldsDualRing 1.2s linear infinite;
 }
 
 .loadingSpinnerOverlay {

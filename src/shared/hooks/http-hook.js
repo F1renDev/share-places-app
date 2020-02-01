@@ -4,6 +4,8 @@ export const useHttpClient = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
+  //useRef used instead managin through state because there is no need to update the UI
+  // it's some behind the scenes data being managed
   const activeHttpRequest = useRef([]);
 
   //Wrapped in useCallback so that the function is never recreated when the component rerenders

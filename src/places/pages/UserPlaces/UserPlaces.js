@@ -1,44 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PlaceList from "../../components/PlaceList/PlaceList";
-
-// Temporary immitation of the backend with places created by user
-const TEST_PLACES = [
-  {
-    id: "p1",
-    title: "Empire State Building",
-    description: "One of the most famous skyscrapers in the world",
-    imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
-    address: "20 W 34th St, New York, NY 10001",
-    location: {
-      lat: 40.7483405,
-      lng: -73.9858531
-    },
-    creator: "u1"
-  },
-  {
-    id: "p2",
-    title: "Emp. State Building",
-    description: "One of the most famous skyscrapers in the world",
-    imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
-    address: "20 W 34th St, New York, NY 10001",
-    location: {
-      lat: 40.7483405,
-      lng: -73.9858531
-    },
-    creator: "u2"
-  }
-];
+import { useHttpClient } from "../../../shared/hooks/http-hook";
+import ErrorModal from "../../../shared/components/UIElements/ErrorModal/ErrorModal";
+import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner/LoadingSpinner";
 
 const UserPlaces = props => {
+  const [loadedPlaces, setLoadedPlaces] = useState();
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   //  User id that is encoded in the URL
   const userId = useParams().userId;
-  
+
+  //useEffect is used to only send request once
+  useEffect(() => {
+    const fetchPlaces = async () => {
+      try {
+        const responseData = await sendRequest(
+          `http://localhost:5000/api/places/user/${userId}`
+        );
+        setLoadedPlaces(responseData.places);
+      } catch (err) {}
+    };
+    fetchPlaces();
+  }, [sendRequest, userId]);
+
+  const placeDeletedHandler = deletePlaceId => {
+    setLoadedPlaces(prevPlaces =>
+      prevPlaces.filter(place => place.id !== deletePlaceId)
+    );
+  };
+
   // Returning only the places of the current user
-  const loadPlaces = TEST_PLACES.filter(place => place.creator === userId);
-  return <PlaceList items={loadPlaces} />;
+  return (
+    <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
+      {isLoading && (
+        <div className="center">
+          <LoadingSpinner />
+        </div>
+      )}
+      {!isLoading && loadedPlaces && (
+        <PlaceList onDeletePlace={placeDeletedHandler} items={loadedPlaces} />
+      )}
+    </React.Fragment>
+  );
 };
 
 export default UserPlaces;
