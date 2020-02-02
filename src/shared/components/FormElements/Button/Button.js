@@ -6,9 +6,6 @@ import styles from "./Button.module.css";
 const Button = props => {
   //A custom button component styled differently based on props
 
-
-  
-
   const newSize = props.size
     ? props.size.charAt(0).toUpperCase() + props.size.slice(1)
     : null;
