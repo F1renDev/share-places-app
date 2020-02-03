@@ -55,7 +55,10 @@ const NewPlace = () => {
       formData.append("image", formState.inputs.image.value);
       //The fetch API automatically adds the right headers so no need to
       //set them manually
-      await sendRequest("http://localhost:5000/api/places", "POST", formData);
+      //But any custom headers should still be set manually
+      await sendRequest("http://localhost:5000/api/places", "POST", formData, {
+        Authorization: "Bearer " + auth.token
+      }); 
       // Redirecting a user to a different page in the success case
       history.push("/");
     } catch (err) {}
