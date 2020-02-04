@@ -55,7 +55,7 @@ const NewPlace = () => {
       //The fetch API automatically adds the right headers so no need to
       //set them manually
       //But any custom headers should still be set manually
-      await sendRequest("http://localhost:5000/api/places", "POST", formData, {
+      await sendRequest(process.env.REACT_APP_BACKEND_URL + "/places", "POST", formData, {
         Authorization: "Bearer " + auth.token
       }); 
       // Redirecting a user to a different page in the success case
